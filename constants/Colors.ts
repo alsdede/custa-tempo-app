@@ -1,13 +1,14 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const tintColorLight = '#FF5B10';
+const tintColorDark = '#FFF2E8';
 
 export default {
   light: {
     text: '#000',
-    background: '#fff',
+    background: '#FFF2E8',
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
+    black:"#000"
   },
   dark: {
     text: '#fff',

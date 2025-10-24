@@ -1,16 +1,24 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+/* eslint-disable no-unused-vars, react-hooks/exhaustive-deps */
+/* eslint-disable */
+// prettier-ignore
+// import "./global.css"
+import 'react-native-reanimated';
+import { Inter_500Medium, Inter_700Bold, Inter_900Black } from "@expo-google-fonts/inter";
+import { PublicSans_500Medium, PublicSans_700Bold, PublicSans_700Bold_Italic, PublicSans_800ExtraBold, PublicSans_900Black, } from '@expo-google-fonts/public-sans';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import 'react-native-reanimated';
+
+
+
 
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from 'expo-router';
 
 export const unstable_settings = {
@@ -22,23 +30,26 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
+ const [fontsLoaded] = useFonts({
+    PublicSans_900Black,
+    PublicSans_500Medium,
+    PublicSans_700Bold,
+    PublicSans_700Bold_Italic,
+    PublicSans_800ExtraBold,
+    Inter_900Black,
+    Inter_700Bold,
+    Inter_500Medium,
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+
 
   useEffect(() => {
-    if (loaded) {
+    if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [fontsLoaded]);
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 
